@@ -1,3 +1,5 @@
+options:
+  logging: CLOUD_LOGGING_ONLY
 steps:
 - name: 'gcr.io/cloud-builders/docker' #prebuilt image from google
   args: ['build', '-t', 'gcr.io/fresh-oath-443111-s7/fastapi-app:latest', '.']
