@@ -3,8 +3,14 @@ options:
 steps:
 - name: 'gcr.io/cloud-builders/docker' #prebuilt image from google
   args: ['build', '-t', 'gcr.io/fresh-oath-443111-s7/fastapi-app:latest', '.']
+  # push container image to container registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/fresh-oath-443111-s7/fastapi-app:latest']
+
+  # deploy container image to cloud run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'fast-api-test', '--image', 'gcr.io/fresh-oath-443111-s7/gcr.io/fresh-oath-443111-s7/fastapi-app:latest', '--region', 'us-central1', '--platform', 'managed']
 
 images:
   - 'gcr.io/fresh-oath-443111-s7/fastapi-app:latest'
