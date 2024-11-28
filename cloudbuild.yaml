@@ -10,7 +10,7 @@ steps:
   # deploy container image to cloud run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'fast-api-test', '--image', 'gcr.io/fresh-oath-443111-s7/fastapi-app:latest', '--region', 'us-central1', '--platform', 'managed']
+  args: ['run', 'deploy', 'fast-api-test', '--image', 'gcr.io/fresh-oath-443111-s7/fastapi-app:latest','--region', 'us-central1', '--platform', 'managed', --allow-unauthenticated]
 
 images:
   - 'gcr.io/fresh-oath-443111-s7/fastapi-app:latest'
